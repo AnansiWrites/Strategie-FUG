@@ -1,0 +1,1127 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stratégie de Mécénat & Communication - FUG</title>
+    <style>
+        :root {
+            /* Palette Officielle FUG */
+            --fug-green: #13926e;        
+            --fug-green-light: #a5cc78;  
+            --fug-mint: #d9f2ea;         
+            --fug-ocean-blue: #1f7a8c;   
+            --fug-yellow: #ffc000;       
+            --fug-grey-light: #f8fafc;   
+            --fug-grey-border: #e2e8f0;
+
+            /* Variables Structure - THÈME BLANC */
+            --bg-dark: #ffffff;          
+            --bg-card: #ffffff;          
+            --text-main: #0f172a;        
+            --text-muted: #475569;      
+            --border: #e2e8f0;           
+
+            /* Piliers aux couleurs de la charte */
+            --pilier1: var(--fug-green);
+            --pilier2: var(--fug-ocean-blue);
+            --pilier3: var(--fug-yellow);
+            --pilier4: var(--fug-green-light);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+        }
+
+        body {
+            background-color: #ffffff;
+            color: var(--text-main);
+            display: flex;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        /* Sidebar Navigation - Fond Blanc */
+        .sidebar {
+            width: 320px;
+            background-color: #ffffff;
+            border-right: 1px solid var(--border);
+            display: flex;
+            flex-direction: column;
+            padding: 20px 10px;
+            overflow-y: auto;
+        }
+
+        .brand {
+            padding: 10px 15px 20px 15px;
+            border-bottom: 1px solid var(--border);
+            margin-bottom: 15px;
+        }
+
+        .brand h1 {
+            font-size: 1.2rem;
+            color: var(--fug-green);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 800;
+        }
+
+        .brand p {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-top: 4px;
+        }
+
+        .nav-group {
+            margin-bottom: 15px;
+        }
+
+        .nav-header {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 8px 12px;
+            font-weight: 700;
+            border-radius: 4px;
+            margin-bottom: 5px;
+        }
+
+        .nav-header.p1 { color: var(--fug-green); background: var(--fug-mint); }
+        .nav-header.p2 { color: var(--fug-ocean-blue); background: rgba(31, 122, 140, 0.12); }
+        .nav-header.p3 { color: #b45309; background: rgba(255, 192, 0, 0.18); }
+        .nav-header.p4 { color: #2e6f40; background: rgba(165, 204, 120, 0.25); }
+
+        .nav-item {
+            padding: 10px 12px;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            cursor: pointer;
+            border-radius: 6px;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            margin-bottom: 2px;
+        }
+
+        .nav-item:hover {
+            background-color: var(--fug-grey-light);
+            color: var(--fug-green);
+        }
+
+        .nav-item.active {
+            background-color: var(--fug-green);
+            color: #ffffff;
+            font-weight: 600;
+        }
+
+        /* Main Content */
+        .main-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            position: relative;
+            background-color: #ffffff;
+        }
+
+        .slide-container {
+            flex: 1;
+            padding: 40px;
+            padding-bottom: 80px;
+            overflow-y: auto;
+            display: none;
+        }
+
+        .slide-container.active {
+            display: block;
+        }
+
+        .slide-header {
+            margin-bottom: 25px;
+            border-bottom: 2px solid var(--border);
+            padding-bottom: 15px;
+        }
+
+        .slide-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+
+        .badge-p1 { background-color: var(--fug-green); color: white; }
+        .badge-p2 { background-color: var(--fug-ocean-blue); color: white; }
+        .badge-p3 { background-color: var(--fug-yellow); color: #0f172a; }
+        .badge-p4 { background-color: var(--fug-green-light); color: #0f172a; }
+
+        .slide-title {
+            font-size: 1.8rem;
+            color: var(--text-main);
+        }
+
+        /* Card Layouts */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .card {
+            background-color: #ffffff;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+        }
+
+        .card-title {
+            font-size: 1.1rem;
+            color: var(--fug-green);
+            font-weight: 700;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .card-title.green { color: var(--fug-green); }
+        .card-title.amber { color: #d97706; }
+        .card-title.purple { color: var(--fug-ocean-blue); }
+
+        .card p, .card li {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+
+        .card ul {
+            list-style-position: inside;
+            margin-top: 8px;
+        }
+
+        .card li {
+            margin-bottom: 6px;
+        }
+
+        /* Highlight Boxes */
+        .highlight-box {
+            background: var(--fug-mint);
+            border-left: 4px solid var(--fug-green);
+            padding: 15px;
+            border-radius: 0 8px 8px 0;
+            margin-bottom: 20px;
+        }
+
+        .highlight-box.alert {
+            background: #fffbeb;
+            border-left: 4px solid var(--fug-yellow);
+        }
+
+        .highlight-title {
+            font-weight: bold;
+            font-size: 0.95rem;
+            color: var(--text-main);
+            margin-bottom: 5px;
+        }
+
+        /* Project Audit Component */
+        .project-card {
+            background-color: #ffffff;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            margin-bottom: 20px;
+            overflow: hidden;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+        }
+
+        .project-header {
+            background-color: var(--fug-grey-light);
+            padding: 15px 20px;
+            border-bottom: 1px solid var(--border);
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: var(--fug-green);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .project-body {
+            padding: 20px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .project-section {
+            font-size: 0.88rem;
+        }
+
+        .project-section-title {
+            font-weight: bold;
+            color: var(--text-main);
+            margin-bottom: 5px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+            font-size: 0.88rem;
+            background-color: #ffffff;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+        }
+
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+        }
+
+        th {
+            background-color: var(--fug-grey-light);
+            color: var(--fug-green);
+            font-weight: 700;
+        }
+
+        td {
+            color: var(--text-muted);
+        }
+
+        /* Footer Controls */
+        .controls {
+            height: 65px;
+            background-color: #ffffff;
+            border-top: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 40px;
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            left: 320px;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            border-radius: 6px;
+            border: 1px solid var(--border);
+            background-color: var(--fug-green);
+            color: #ffffff;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .btn:hover {
+            background-color: #0f765b;
+        }
+
+        .btn:disabled {
+            background-color: var(--fug-grey-light);
+            color: #94a3b8;
+            border-color: var(--border);
+            cursor: not-allowed;
+            opacity: 0.7;
+        }
+
+        .slide-number {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            font-weight: 600;
+        }
+
+        strong {
+            color: var(--text-main);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Sidebar Navigation -->
+    <div class="sidebar">
+        <div class="brand">
+            <h1>Fondation UG</h1>
+            <p>Stratégie Mécénat & Communication</p>
+        </div>
+
+        <div class="nav-group">
+            <div class="nav-header p1">1. Structurer</div>
+            <div class="nav-item active" onclick="goToSlide(0)">1. Cadre Juridique & Rôles</div>
+            <div class="nav-item" onclick="goToSlide(1)">2. Architecture des flux</div>
+            <div class="nav-item" onclick="goToSlide(2)">3. Audit Projets (1/2)</div>
+            <div class="nav-item" onclick="goToSlide(3)">4. Audit Projets (2/2)</div>
+        </div>
+
+        <div class="nav-group">
+            <div class="nav-header p2">2. Communiquer</div>
+            <div class="nav-item" onclick="goToSlide(4)">5. Psychologie & Cible FUG vs Projets</div>
+            <div class="nav-item" onclick="goToSlide(5)">6. Lexique RSE / ESG / ODD</div>
+            <div class="nav-item" onclick="goToSlide(6)">7. Arsenal Print</div>
+            <div class="nav-item" onclick="goToSlide(7)">8. Écosystème Digital</div>
+        </div>
+
+        <div class="nav-group">
+            <div class="nav-header p3">3. Mobiliser</div>
+            <div class="nav-item" onclick="goToSlide(8)">9. Matrice Canaux & Supports</div>
+            <div class="nav-item" onclick="goToSlide(9)">10. Plan de Com & Offres Mécénat</div>
+            <div class="nav-item" onclick="goToSlide(10)">11. Stratégie Événementielle VIP</div>
+        </div>
+
+        <div class="nav-group">
+            <div class="nav-header p4">4. Piloter</div>
+            <div class="nav-item" onclick="goToSlide(11)">12. App Mobile : Tiers-Lieu Virtuel UG</div>
+            <div class="nav-item" onclick="goToSlide(12)">13. Pilotage Data, CRM & Logistique</div>
+        </div>
+    </div> <!-- CORRECTION : Balise de fermeture de sidebar ajoutée ici -->
+
+    <!-- Main Content Area -->
+    <div class="main-content">
+
+        <!-- SLIDE 0 : Cadre Juridique -->
+        <div class="slide-container active">
+            <div class="slide-header">
+                <span class="slide-badge badge-p1">Pilier 1 : Structurer</span>
+                <h2 class="slide-title">Cadre Juridique, Fiscalité & Assainissement Sémantique</h2>
+            </div>
+            
+            <div class="highlight-box alert">
+                <div class="highlight-title">⚠️ Note interne</div>
+                L'amalgame terminologique (ex: confondre "prestation" et "mécénat") expose la Fondation à un risque de requalification fiscale majeure. Le reçu fiscal CERFA 16216 est émis <strong>uniquement après l'encaissement effectif et irrévocable</strong> des fonds.
+            </div>
+
+            <div class="grid-3">
+                <div class="card">
+                    <div class="card-title">🎁 Donateurs (B2C)</div>
+                    <p><strong>Cible :</strong> Particuliers & Alumni.</p>
+                    <p><strong>Motivation :</strong> Altruisme pur, sentiment d'appartenance.</p>
+                    <p><strong>Régime :</strong> Réduction d'Impôt sur le Revenu (IR) de 66 % du montant du don.</p>
+                    <p><strong>Contrepartie :</strong> Aucune contrepartie directe autorisée.</p>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">🤝 Mécènes (B2B / RSE)</div>
+                    <p><strong>Cible :</strong> PME locales, Grands Comptes, Fondations.</p>
+                    <p><strong>Motivation :</strong> Engagement RSE, impact territorial.</p>
+                    <p><strong>Régime :</strong> Réduction d'Impôt sur les Sociétés (IS) de 60 %.</p>
+                    <p><strong>Plafond Contreparties :</strong> Plafonné strictly à 25 % de la valeur du don (valorisé au coût de revient HT).</p>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">📢 Sponsors / Parrains</div>
+                    <p><strong>Cible :</strong> Partenaires commerciaux B2B.</p>
+                    <p><strong>Motivation :</strong> Visibilité commerciale & ROI marketing.</p>
+                    <p><strong>Régime :</strong> Facture soumise à TVA, déductible à 100 % en charge d'exploitation.</p>
+                    <p><strong>Interdiction :</strong> Aucun reçu fiscal CERFA ne peut être émis.</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-title">🛠️ Typologie Précise des Formes d'Apport</div>
+                <div class="grid-3" style="margin-bottom:0;">
+                    <div>
+                        <p><strong>1. Mécénat Financier :</strong> Versement direct de fonds (ponctuel ou récurrent). Forme la plus simple et flexible pour abonder la trésorerie ou financer un projet précis.</p>
+                    </div>
+                    <div>
+                        <p><strong>2. Apport en Nature :</strong> Mise à disposition de matériel, véhicules (4x4, pirogues) ou stocks. Valorisation obligatoire au coût de revient HT (pas au prix de vente commercial).</p>
+                    </div>
+                    <div>
+                        <p><strong>3. Mécénat de Compétences :</strong> Mise à disposition de personnel qualifié (Data Scientist, juriste) sur son temps de travail. Valorisation au coût salarial chargé réel.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 1 : Flux, Destination des Fonds & Leviers (Ancien Slide 2) -->
+        <div class="slide-container">
+            <div class="slide-header">
+                <span class="slide-badge badge-p1">Pilier 1 : Structurer</span>
+                <h2 class="slide-title">Architecture des Flux : Destination des Fonds & Mécanismes de Captation</h2>
+            </div>
+
+            <!--ENCADRÉ PÉDAGOGIQUE PARETO -->
+            <div class="highlight-box">
+                <div class="highlight-title">⚖️ Principes Fondamentaux : La Logique Pareto en Mécénat</div>
+                <p style="font-size: 0.88rem; color: var(--text-main); margin-top: 5px;">
+                    Une stratégie de mécénat pérenne repose sur l'équilibre entre **Volume** et **Valeur** (Loi de Pareto) :
+                    <br>
+                    • <strong>80% des ressources / du soutien territorial</strong> proviennent du tissu local (TPE, PME, Alumni) ➔ Assure la récurrence, l'ancrage communautaire et la légitimité.
+                    <br>
+                    • <strong>20% des grands comptes</strong> apportent les tickets majeurs ➔ Financent les projets d'envergure et l'abondement.
+                    <br><br>
+                    <strong>Impératif :</strong> Chaque profil de financeur peut alimenter soit le <u>Fonctionnement/Fonds Général (Non Affecté)</u>, soit un <u>Projet Spécifique (Affecté)</u>. La direction ne doit négliger aucun vivier.
+                </p>
+            </div>
+
+            <div class="grid-3">
+                <div class="card">
+                    <div class="card-title green">🏬 PME & TPE Locales</div>
+                    <p><strong>• Destination Non Affectée :</strong> Adhésion au <i>« Club des Mécènes »</i> pour soutenir l'ingénierie et l'ancrage territorial de la FUG.</p>
+                    <p><strong>• Destination Affectée :</strong> Parrainage direct d'un boursier Margo local ou soutien d'une fiche infographique du Mag.</p>
+                    <p><strong>• Levier de Captation :</strong> Événements de Proximité (Petits-déjeuners VIP, formats réseaux) & Prospection directe B2B.</p>
+                </div>
+
+                <div class="card">
+                    <div class="card-title green">🏙️ ETI & Grands Comptes</div>
+                    <p><strong>• Destination Non Affectée :</strong> Abondement du fonds de dotation FUG, mécénat de compétences ou co-financement d'infrastructures.</p>
+                    <p><strong>• Destination Affectée :</strong> Naming de Chaires de recherche, financement global d'une promotion ou de saisons médias.</p>
+                    <p><strong>• Levier de Captation :</strong> Prospection directe de haut niveau (RDV Direction/RSE) & Invitations aux grands temps forts FUG.</p>
+                </div>
+
+                <div class="card">
+                    <div class="card-title green">🎓 Particuliers & Alumni</div>
+                    <p><strong>• Destination Non Affectée :</strong> Dons récurrents mensuels au fonds d'urgence FUG ou cotisations réseau Alumni.</p>
+                    <p><strong>• Destination Affectée :</strong> Micro-donations "Coup de Cœur" sur un projet étudiant ou cagnotte de crowdfunding.</p>
+                    <p><strong>• Levier de Captation :</strong> Campagnes de collecte digitales (Landing pages, App mobile, réseaux sociaux) & Événements festifs/Gala.</p>
+                </div>
+            </div>
+
+            
+        </div>
+
+        <!-- SLIDE 2 : Audit Projets (1/2) -->
+        <div class="slide-container">
+            <div class="slide-header">
+                <span class="slide-badge badge-p1">Pilier 1 : Structurer</span>
+                <h2 class="slide-title">Ingénierie Mécénat : Stabilisation des Projets (QQOQCCP)</h2>
+            </div>
+
+            <!-- SECTION PÉDAGOGIQUE INTRODUCTIVE -->
+            <div class="highlight-box">
+                <div class="highlight-title">📌 Préalable Méthodologique : La Démarche QQOQCCP</div>
+                <p style="font-size: 0.88rem; color: var(--text-main); margin-top: 5px;">
+                    Pour construire un <strong>arsenal de communication pérenne</strong> et mener un <strong>ciblage mécènes chirurgical</strong>, chaque projet doit impérativement valider la grille <strong>QQOQCCP</strong> (<i>Qui, Quoi, Où, Quand, Comment, Combien, Pourquoi</i>). 
+                    <br><br>
+                    <strong>La règle d'or :</strong> <u>Projet stabilisé ➔ Supports longue durée ➔ Ciblage mécènes simplifié</u>. L'inventaire exhaustif des opportunités de soutien (Financier, Nature, Compétences, Naming) doit être formalisé en amont par les porteurs de projet avant d'initier la phase de promotion.
+                </p>
+            </div>
+
+            <div class="project-card">
+                <div class="project-header">🎓 1. La Bourse Margo</div>
+                <div class="project-body">
+                    <div class="project-section">
+                        <div class="project-section-title">📄 Périmètre Actuel</div>
+                        <p>Accompagner la mobilité et le soutien financier des étudiants de l'Université de Guyane. Réduire la précarité et favoriser l'égalité des chances.</p>
+                        <br>
+                        <div class="project-section-title">❓ Points QQOQCCP à Stabiliser avec le Porteur</div>
+                        <p><strong>• Où & Quand :</strong> Clarifier précisément le périmètre géographique (3 Guyanes vs Hors-Erasmus international) et la durée de la mobilité.</p>
+                        <p><strong>• Combien :</strong> Fixer le coût unitaire exact d'une bourse pour décliner l'offre mécène.</p>
+                    </div>
+                    <div class="project-section">
+                        <div class="project-section-title">⚙️ Facteurs d'Éligibilité / Logistique</div>
+                        <p>Sécuriser la convention avec les universités d'accueil internationales pour garantir l'accueil effectif des boursiers.</p>
+                        <br>
+                        <div class="project-section-title">💡 Inventaire des Opportunités Mécénat</div>
+                        <p>Produit idéal pour le Mécénat Affecté. Possibilité d'offrir du Naming : <strong>« Bourse Margo + [Nom de l'entreprise] »</strong> ou parrainage individuel.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-header">🏆 2. Le Prix d'Excellence Maj'Or</div>
+                <div class="project-body">
+                    <div class="project-section">
+                        <div class="project-section-title">📄 Périmètre Actuel</div>
+                        <p>Récompenser les majors de promotion et promouvoir l'excellence académique à l'Université.</p>
+                        <br>
+                        <div class="project-section-title">❓ Points QQOQCCP à Stabiliser avec le Porteur</div>
+                        <p><strong>• Qui & Quoi :</strong> Définir précisément les filières concernées (Spatial, Environnement, Droit) pour cibler les entreprises du secteur.</p>
+                        <p><strong>• Combien :</strong> Établir la dotation exacte par prix et le coût global de l'événement.</p>
+                    </div>
+                    <div class="project-section">
+                        <div class="project-section-title">⚙️ Facteurs d'Éligibilité / Logistique</div>
+                        <p>Caler rigoureusement le calendrier d'attribution en amont du Gala de Décembre pour s'aligner sur la clôture fiscale des entreprises (31/12).</p>
+                        <br>
+                        <div class="project-section-title">💡 Inventaire des Opportunités Mécénat</div>
+                        <p>Sponsoring direct, Naming de prix de filières et valorisation de la Marque Employeur pour le recrutement des futurs cadres.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 3 : Audit Projets (2/2) -->
+        <div class="slide-container">
+            <div class="slide-header">
+                <span class="slide-badge badge-p1">Pilier 1 : Structurer</span>
+                <h2 class="slide-title">Ingénierie Mécénat : Stabilisation des Projets (2/2)</h2>
+            </div>
+
+            <div class="project-card">
+                <div class="project-header">📖 3. Le Mag Amazonien</div>
+                <div class="project-body">
+                    <div class="project-section">
+                        <div class="project-section-title">📄 Périmètre Actuel</div>
+                        <p>Diffuser les travaux de recherche et la culture scientifique en Guyane auprès du grand public.</p>
+                        <br>
+                        <div class="project-section-title">❓ Points QQOQCCP à Stabiliser avec le Porteur</div>
+                        <p><strong>• Comment & Pour qui :</strong> Structurer le format éditorial (vulgarisation, infographies) et les langues de diffusion (FR, EN, PT, ES).</p>
+                        <p><strong>• Quand :</strong> Définir la périodicité de parution pour caler le calendrier de régie publicitaire/mécénat.</p>
+                    </div>
+                    <div class="project-section">
+                        <div class="project-section-title">⚙️ Facteurs d'Éligibilité / Logistique</div>
+                        <p>Mettre en place un comité de relecture scientifique réactif pour valider le contenu sans pénaliser les délais de parution.</p>
+                        <br>
+                        <div class="project-section-title">💡 Inventaire des Opportunités Mécénat</div>
+                        <p>Mécénat d'édition (co-financement de numéro) et parrainage d'infographies pédagogiques à fort impact RSE.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-header">🎙️ 4. Le Podcast FUG</div>
+                <div class="project-body">
+                    <div class="project-section">
+                        <div class="project-section-title">📄 Périmètre Actuel</div>
+                        <p>Proposer un contenu audio régulier sur l'actualité et la recherche universitaire.</p>
+                        <br>
+                        <div class="project-section-title">❓ Points QQOQCCP à Stabiliser avec le Porteur</div>
+                        <p><strong>• Quoi & Comment :</strong> Valider le modèle de production (utilisation d'IA audio pour le doublage multilingue) et la ligne éditoriale.</p>
+                        <p><strong>• Combien :</strong> Chiffrer le coût par saison ou par épisode pour le packaging des offres.</p>
+                    </div>
+                    <div class="project-section">
+                        <div class="project-section-title">⚙️ Facteurs d'Éligibilité / Logistique</div>
+                        <p>Sécuriser le cadre juridique spécifique au droit à la voix des chercheurs et aux traitements des données vocales par IA.</p>
+                        <br>
+                        <div class="project-section-title">💡 Inventaire des Opportunités Mécénat</div>
+                        <p>Mécénat de compétences (matériel/studio), Naming de saison et parrainage d'épisodes ciblés.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 4 : Psychologie & Cible FUG vs Projets -->
+        <div class="slide-container">
+            <div class="slide-header">
+                <span class="slide-badge badge-p2">Pilier 2 : Communiquer</span>
+                <h2 class="slide-title">Psychologie des Cibles & Distinction : Com FUG vs Com Projets</h2>
+            </div>
+
+            <div class="highlight-box alert">
+                <div class="highlight-title">🔑 La Règle de Cloisonnement de la Communication</div>
+                Il faut impérativement distinguer la <strong>Communication Institutionnelle FUG</strong> (légitimité, gouvernance, fiscalité, transparence) de la <strong>Communication Marque-Projet</strong> (émotion, impact direct, storytelling de la Bourse Margo ou du Mag). La FUG rassure, le Projet enthousiasme.
+            </div>
+
+            <div class="grid-3">
+                <div class="card">
+                    <div class="card-title green">🏬 PME & TPE Locales</div>
+                    <p><strong>Psychologie :</strong> Fierté du territoire, pragmatisme, peur de la lourdeur administrative.</p>
+                    <p><strong>Besoin FUG :</strong> Preuve de simplicité, calcul immédiat de l'économie d'impôt (ex: 2000 € = 800 € nets).</p>
+                    <p><strong>Besoin Projet :</strong> Ancrage local direct (ex: soutenir des jeunes de Guyane).</p>
+                </div>
+
+                <div class="card">
+                    <div class="card-title green">🏙️ Grands Comptes & Fondations</div>
+                    <p><strong>Psychologie :</strong> Alignement ESG, impact mesurable, prestige, rigueur d'instruction.</p>
+                    <p><strong>Besoin FUG :</strong> Gouvernance irréprochable, capacité à délivrer les reçus CERFA, rapports d'impact.</p>
+                    <p><strong>Besoin Projet :</strong> Excellence scientifique (Amazonie, Spatial) & indicateurs d'impact précis.</p>
+                </div>
+
+                <div class="card">
+                    <div class="card-title green">🙋‍♂️ Particuliers & Alumni</div>
+                    <p><strong>Psychologie :</strong> Nostalgie, solidarité intergénérationnelle, preuve concrète de l'utilité du don.</p>
+                    <p><strong>Besoin FUG :</strong> Transparence totale sur l'utilisation des fonds, paiement ultra-sécurisé.</p>
+                    <p><strong>Besoin Projet :</strong> Storytelling humain, visages des boursiers, vidéos d'impact.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 5 : Lexique RSE / ESG / ODD -->
+        <div class="slide-container">
+            <div class="slide-header">
+                <span class="slide-badge badge-p2">Pilier 2 : Communiquer</span>
+                <h2 class="slide-title">Lexique Stratégique & Argumentaire RSE / ESG / ODD</h2>
+            </div>
+
+            <div class="highlight-box">
+                <div class="highlight-title">🎯 Alignement Lexical avec les Décideurs Corporate</div>
+                Pour transformer une intention de don en partenariat d'entreprise, la FUG doit employer les éléments de langage précis des comités d'engagement (RSE, ESG, ODD). Le mécénat est un **investissement à impact territorial**.
+            </div>
+
+            <div class="grid-3">
+                <div class="card">
+                    <div class="card-title green">🌱 RSE & Ancrage Territorial</div>
+                    <p><strong>• Responsabilité Sociétale :</strong> Alignement des projets FUG sur les axes stratégiques RSE des entreprises.</p>
+                    <p><strong>• Ancrage Local :</strong> Retombées directes sur le bassin d'emploi et de formation en Guyane.</p>
+                    <p><strong>• Licence Sociale d'Opérer (LSO) :</strong> Renforcement de l'acceptabilité sociale des industriels sur le territoire.</p>
+                    <p><strong>• Engagement Collaborateurs :</strong> Mécénat de compétences pour mobiliser les salariés sur des projets porteurs de sens.</p>
+                </div>
+
+                <div class="card">
+                    <div class="card-title green">📊 Critères ESG & Reporting</div>
+                    <p><strong>• Volet Environnemental (E) :</strong> Recherche sur la biodiversité amazonienne, transition écologique et projets Campus Vert.</p>
+                    <p><strong>• Volet Social (S) :</strong> Lutte contre la précarité étudiante, égalité des chances et inclusion.</p>
+                    <p><strong>• Volet Gouvernance (G) :</strong> Traçabilité absolue des fonds, éthique, et garantie de délivrance des reçus CERFA 16216.</p>
+                    <p><strong>• Mesure d'Impact (SROI) :</strong> Bilans chiffrés et indicateurs de performance sociale pour le reporting extra-financier.</p>
+                </div>
+
+                <div class="card">
+                    <div class="card-title green">🇺🇳 ODD ONU (Objectifs 2030)</div>
+                    <p><strong>• ODD 4 (Éducation de Qualité) :</strong> Accès équitable à l'enseignement supérieur via la Bourse Margo et les Chaires.</p>
+                    <p><strong>• ODD 10 (Inégalités Réduites) :</strong> Égalité des chances et désenclavement des parcours académiques.</p>
+                    <p><strong>• ODD 17 (Partenariats) :</strong> Co-construction de solutions pérennes entre acteurs publics, privés et académiques.</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-title green">💬 Argument-Clé pour les Rendez-vous Mécènes</div>
+                <p><i>« En soutenant la Fondation de l'Université de Guyane, votre entreprise ne réalise pas seulement un don fiscalement optimisé (60 % de réduction d'IS) ; elle valide directement ses **critères ESG**, coche les **ODD 4 & 17 de l'ONU**, et réinvestit sa valeur ajoutée au cœur de son **bassin territorial** de développement. »</i></p>
+            </div>
+        </div>
+
+        <!-- SLIDE 6 : L'Arsenal Print & Stratégie de Cloisonnement -->
+        <div class="slide-container">
+            <div class="slide-header">
+                <span class="slide-badge badge-p2">Pilier 2 : Communiquer</span>
+                <h2 class="slide-title">Ingénierie Print : Kit Physique & Cloisonnement Cibles</h2>
+            </div>
+
+            <div class="highlight-box alert">
+                <div class="highlight-title">🔒 La Règle d'Or du Cloisonnement des Montants</div>
+                <strong>Adapter le format au profil du mécène :</strong> Présenter un budget global de 50 000 € à une PME l'intimide. À l'inverse, proposer un ticket de 1 000 € à un Grand Compte bride son potentiel. La Responsable Mécénat pioche dans son kit physique selon la carrure du prospect.
+            </div>
+
+            <div class="grid-2">
+                <div class="card">
+                    <div class="card-title green">🏛️ 1. Supports Print Institutionnels (Fonctionnement FUG)</div>
+                    <p><strong>Rôle :</strong> Financer la structure, l'ingénierie et l'animation de la Fondation.</p>
+                    <ul>
+                        <li><strong>Leaflet Institutionnel FUG :</strong> Format synthétique présentant la mission de la Fondation, la traçabilité des fonds et le calcul rapide de la déduction fiscale (60% IS / 66% IR).</li>
+                        <li><strong>Plaquette « Club des Mécènes » :</strong> Présentation des grilles d'adhésion annuelle pour le tissu économique local (tickets de 1 000 € à 5 000 €/an).</li>
+                        <li><strong>Chemise à Rabats Prestige FUG :</strong> Pochette aux couleurs de la charte servant d'écrin haut de gamme pour rassembler les fiches lors des RDV décideurs.</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <div class="card-title green">🎯 2. Supports Print Projets (Investissement & Impact)</div>
+                    <p><strong>Rôle :</strong> Financer des actions ciblées (Bourse Margo, Prix Maj'Or, Mag, Podcast).</p>
+                    <ul>
+                        <li><strong>Format PME (Leaflets A4 Recto/Verso) :</strong> Focus sur le <i>coût unitaire d'impact</i> (ex: 1 500 € = 1 boursier) pour concrétiser le don sans afficher un budget global intimidant.</li>
+                        <li><strong>Format Grands Comptes (Dossiers d'Instruction) :</strong> Fiches projets détaillées glissées dans la chemise FUG (budget consolidé, Naming, convention pluriannuelle, critères ESG).</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-title green">🧰 Matrice Print des Supports Projets (Catégorie 2 par Profil de Mécène)</div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Projet FUG</th>
+                            <th>Leaflet PME / Proximité (Impact Unitaire)</th>
+                            <th>Dossier Grand Compte (Vision Globale & ESG)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>🎓 Bourse Margo</strong></td>
+                            <td><strong>Leaflet A4 "Parrainer un Étudiant"</strong><br>Ticket : 1 500 € (600 € net) pour 1 mobilité d'étudiant.</td>
+                            <td><strong>Dossier Naming & Programme Margo</strong><br>Ticket : 15 000 € à 30 000 €/an (Naming promo / RSE).</td>
+                        </tr>
+                        <tr>
+                            <td><strong>🏆 Prix Maj'Or</strong></td>
+                            <td><strong>Fiche Sponsor "Prix de Filière"</strong><br>Ticket : 1 000 € pour le prix d'un major dans une discipline.</td>
+                            <td><strong>Dossier Parrainage Principal Gala</strong><br>Ticket : 10 000 € pour le Naming du Grand Prix de l'Excellence.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>📖 Mag Amazonien</strong></td>
+                            <td><strong>Fiche Sponsoring "Infographie RSE"</strong><br>Ticket : 800 € pour associer un logo à une fiche pédagogique.</td>
+                            <td><strong>Dossier Mécène d'Édition</strong><br>Ticket : 8 000 € à 15 000 € pour le co-financement d'un numéro.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>🎙️ Podcast FUG</strong></td>
+                            <td><strong>Fiche Mécène "Épisode Dédié"</strong><br>Ticket : 500 € / épisode ("Épisode parrainé par...").</td>
+                            <td><strong>Dossier Partenaire Studio & Saison</strong><br>Ticket : 5 000 € à 12 000 € pour le Naming d'une saison ou apport tech.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- SLIDE 7 : L'Écosystème Digital & Tunnels de Conversion -->
+        <div class="slide-container">
+            <div class="slide-header">
+                <span class="slide-badge badge-p2">Pilier 2 : Communiquer</span>
+                <h2 class="slide-title">Ingénierie Digitale : Vitrine, Tunnels de Conversion & Médias</h2>
+            </div>
+
+            <div class="highlight-box">
+                <div class="highlight-title">🌐 Le Digital comme Levier de Conversion & de Rayonnement</div>
+                Si le Print sert de poignée de main lors des RDV directeurs, le Digital automatise le parcours du donateur, réassure la gouvernance FUG et diffuse les contenus scientifiques à l'international.
+            </div>
+
+            <div class="grid-3">
+                <div class="card">
+                    <div class="card-title green">🏛️ Site Institutionnel & Tunnels</div>
+                    <p><strong>• Portail Crédibilité :</strong> Transparence, présentation du conseil d'administration, accès aux bilans financiers et génération automatique des CERFA 16216.</p>
+                    <p><strong>• Formulaire de Don Sécurisé :</strong> Intégration du don ponctuel (CB) et récurrent (Prélèvement SEPA / Abonnement) avec calculateur de déduction fiscale en temps réel.</p>
+                    <p><strong>• Espace Mécènes Corporate :</strong> Demande de rendez-vous en 3 clics et téléchargement des kits médias d'entreprise.</p>
+                </div>
+
+                <div class="card">
+                    <div class="card-title green">🚀 Landing Pages Projets & Crowdfunding</div>
+                    <p><strong>• Bourse Margo :</strong> Page de collecte dédiée avec compteur d'impact dynamique (ex: <i>"8/10 étudiants financés"</i>) et vidéos de témoignages.</p>
+                    <p><strong>• Prix Maj'Or :</strong> Billetterie en ligne pour le Gala de Décembre et réservation de tables VIP pour les PME.</p>
+                    <p><strong>• Micro-Donations :</strong> Modules de crowd-funding pour les micro-équipements étudiants ou projets associatifs.</p>
+                </div>
+
+                <div class="card">
+                    <div class="card-title green">🎧 Innovation Média & IA (Mag & Podcast)</div>
+                    <p><strong>• Liseuse Web Mag Amazonien :</strong> Format feuilletable intégrant des infographies animées et des liens interactifs vers les laboratoires de recherche.</p>
+                    <p><strong>• Podcast IA Multilingue :</strong> Player audio avec transcription dynamique et doublage vocal par IA (FR, EN, PT, ES) pour toucher les fondations internationales.</p>
+                    <p><strong>• Social Selling LinkedIn :</strong> Campagnes ciblées vers les Directeurs RSE et RH de Guyane et de Métropole.</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-title green">📲 Ponts Print ➔ Digital (L'Expérience Phygitale)</div>
+                <p>Chaque support Print (leaflet, fiche projet, chemise) intègre des **QR Codes dynamiques** renvoyant directement vers :</p>
+                <ul>
+                    <li>Le **formulaire de don pré-rempli** pour le projet concerné.</li>
+                    <li>Une **capsule vidéo de 45 secondes** démontrant l'impact du projet sur le terrain.</li>
+                    <li>L'**extrait audio du Podcast FUG** dédié à la thématique abordée lors du RDV mécène.</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- SLIDE 8 : Matrice Canaux/Supports -->
+        <div class="slide-container">
+            <div class="slide-header">
+                <span class="slide-badge badge-p3">Pilier 3 : Mobiliser</span>
+                <h2 class="slide-title">Matrice des Canaux et Supports par Public Cible</h2>
+            </div>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Public Cible</th>
+                        <th>Canal Stratégique</th>
+                        <th>Support Dédié</th>
+                        <th>Type d'Offre / Produit</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Particuliers & Alumni</strong></td>
+                        <td>Web, App Mobile, Réseaux Sociaux</td>
+                        <td>Landing Page, App Tiers-Lieu</td>
+                        <td>Micro-dons, Bourses, Crowdfunding matériel</td>
+                    </tr>
+                    <tr>
+                        <td><strong>PME & TPE Locales</strong></td>
+                        <td>Réseau local, MEDEF / CCI, Événements</td>
+                        <td>Dépliant Trifold Print</td>
+                        <td>Club des Mécènes (Ticket fixe non affecté)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Grands Comptes & RSE</strong></td>
+                        <td>RDV VIP, Salons nationaux</td>
+                        <td>Chemise à rabats + Fiches volantes</td>
+                        <td>Chaires, Mécénat Affecté, Thèses, Naming</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Sponsors Commerciaux</strong></td>
+                        <td>Démarchage direct B2B</td>
+                        <td>Dossier de Partenariat Commercial</td>
+                        <td>Naming d'espaces, Flocage logistique (4x4, pirogues)</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- SLIDE 9 : Plan Com, Offres Mécénat & Ingénierie Éditoriale -->
+        <div class="slide-container">
+            <div class="slide-header">
+                <span class="slide-badge badge-p3" style="background: #eef2ff; color: #4f46e5; padding: 4px 12px; border-radius: 20px; font-weight: 600; font-size: 0.8rem;">Pilier 3 : Mobiliser</span>
+                <h2 class="slide-title">Plan de Communication & Offres Mécénat : La Chaîne de Production Éditoriale</h2>
+            </div>
+
+            <!-- ENCADRÉ PÉDAGOGIQUE : LES 2 AXES ET LA CHAÎNE COMPLÈTE -->
+            <div class="highlight-box">
+                <div class="highlight-title">📣 Double Axe Stratégique & Maîtrise de la Chaîne Éditoriale</div>
+                <p style="font-size: 0.88rem; color: var(--text-main); margin-top: 5px;">
+                    La communication doit simultanément alimenter <strong>2 axes d'investissement</strong> : <u>1. Le Fonctionnement/Marque FUG</u> (Non Affecté - Crédibilité) et <u>2. Les Projets Spécifiques</u> (Affecté - Impact). 
+                    <br><br>
+                    Pour déployer cette stratégie sans épuiser les ressources, nous pilotons la <strong>chaîne complète de production et de diffusion</strong> appuyée sur la méthode du <strong>recyclage d'information (Content Repurposing)</strong> : une seule pépite brute est atomisée en multiples formats adaptatifs.
+                </p>
+            </div>
+
+            <!-- GRILLE3 : MÉDIAS VS CANAUX VS RÉTENTION -->
+            <div class="grid-3">
+                <div class="card">
+                    <div class="card-title green">🎙️ 1. Médias (Ce qu'on raconte)</div>
+                    <p style="font-size: 0.85rem; color: var(--text-sub);"><i>Les contenus bruts et récits de fond</i></p>
+                    <br>
+                    <p><strong>• Contenus Piliers :</strong> Dépêches de recherche, interviews d'étudiants boursiers, dossiers RSE, témoignages de mécènes.</p>
+                    <p><strong>• Formats Natifs :</strong> Articles Mag Amazonien, épisodes du Podcast FUG, reportages vidéo, livrets d'impact.</p>
+                </div>
+
+                <div class="card">
+                    <div class="card-title green">📡 2. Canaux (Par où ça passe)</div>
+                    <p style="font-size: 0.85rem; color: var(--text-sub);"><i>Les flux de diffusion et d'acquisition</i></p>
+                    <br>
+                    <p><strong>• Réseaux Sociaux :</strong> LinkedIn (B2B/Mécènes), Instagram/Facebook (Etudiants/Alumni), YouTube (Vidéos long format).</p>
+                    <p><strong>• Push Direct :</strong> Newsletters Mécènes/Partenaires, campagnes SMS/App, relais presse locaux.</p>
+                </div>
+
+                <div class="card">
+                    <div class="card-title green">🏛️ 3. Rétention (Où ça reste)</div>
+                    <p style="font-size: 0.85rem; color: var(--text-sub);"><i>Le socle pérenne d'atterrissage</i></p>
+                    <br>
+                    <p><strong>• Site Web FUG :</strong> Hub central d'information, formulaires de don et vitrine institutionnelle.</p>
+                    <p><strong>• App Mobile Étudiante :</strong> Point de contact quotidien et relais des opportunités/bourses.</p>
+                    <p><strong>• Base de Connaissances / CRM :</strong> Historique et suivi des relations mécènes.</p>
+                </div>
+            </div>
+
+            <!-- SECTION : RECYCLAGE D'INFO & RESSOURCES (MOYENS) -->
+            <div class="grid-2" style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 15px;">
+                <div class="card">
+                    <div class="card-title green">♻️ Cas Concret : La Logique d'Atomisation (Recyclage)</div>
+                    <p style="font-size: 0.85rem;"><strong>Exemple à partir d'1 Article du Mag Amazonien :</strong></p>
+                    <ul style="font-size: 0.82rem; margin-left: 15px; margin-top: 5px; color: var(--text-main);">
+                        <li>➔ <strong>Article Web / Blog FUG :</strong> Version SEO référencée sur le site.</li>
+                        <li>➔ <strong>Post LinkedIn :</strong> Carrousel synthétique axé "Impact & Mécénat".</li>
+                        <li>➔ <strong>Infographie Instagram :</strong> 1 Chiffre clé ou citation percutante.</li>
+                        <li>➔ <strong>Extrait Audio :</strong> Micro-capsule intégrée au Podcast FUG.</li>
+                        <li>➔ <strong>Push Newsletter :</strong> Insert dans le recap mensuel des mécènes.</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <div class="card-title green">🛠️ Ressources & Outils Nécessaires</div>
+                    <p><strong>• Humaines :</strong> Chargée de communication (Coordination/Stratégie), contribution des porteurs de projets (matière brute) et prestataires ciblés (studio/vidéo).</p>
+                    <p><strong>• Matérielles & Tech :</strong> Suite Adobe/Figma, CMS Site FUG, plateforme d'emailing CRM, matériel de captation mobile & kit audio podcast.</p>
+                    <p><strong>• Process :</strong> Planning éditorial centralisé et calendrier de publication multi-canaux.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 10 : Événements VIP -->
+        <div class="slide-container">
+            <div class="slide-header">
+                <span class="slide-badge badge-p3">Pilier 3 : Mobiliser</span>
+                <h2 class="slide-title">Stratégie Événementielle VIP & Conversion</h2>
+            </div>
+
+            <div class="grid-2">
+                <div class="card">
+                    <div class="card-title amber">🚀 1. Soirée de Lancement FUG (Janvier)</div>
+                    <p><strong>Objectif :</strong> Activer l'écosystème territorial et positionner la FUG.</p>
+                    <p><strong>Cible :</strong> 95 % locale/régionale (acteurs économiques, CCI, MEDEF, élus).</p>
+                    <p><strong>Dispositif :</strong> Retransmission web HD vers les sièges parisiens des grands groupes.</p>
+                    <p><strong>Conversion :</strong> Formulaires d'engagement papier sur table + QR Codes vers le formulaire de don en ligne.</p>
+                </div>
+
+                <div class="card">
+                    <div class="card-title amber">🍸 2. Gala d'Excellence (Décembre)</div>
+                    <p><strong>Objectif :</strong> Clôture des campagnes annuelles et levée de fonds majeure.</p>
+                    <p><strong>Timing Clé :</strong> Calé rigoureusement sur la clôture fiscale des entreprises (optimisation IS avant le 31/12).</p>
+                    <p><strong>Cible :</strong> Grand mécènes locaux et décideurs nationaux.</p>
+                    <p><strong>Format :</strong> Remise du Prix Maj'Or et mise en avant des boursiers Margo.</p>
+                </div>
+            </div>
+<!-- TABLEAU DES LEVIERS DE CAPTATION (Pont vers le Pilier 3) -->
+            <div class="card">
+                <div class="card-title green">🎯 Échelle des Leviers de Mobilisation (Capter au bon niveau)</div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Levier Stratégique</th>
+                            <th>Typologie d'Action / Échelle</th>
+                            <th>Objectif de Captation Principal</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>1. Événements Réseau & Proximité</strong></td>
+                            <td>Du Petit-déjeuner Mécène (3-5 décideurs) aux Rencontres Business FUG.</td>
+                            <td>Convertir le réseau PME local vers le Club des Mécènes (Non Affecté) ou des bourses unifoliées.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>2. Campagnes de Collecte Multi-Canaux</strong></td>
+                            <td>Appels à dons ciblés (Digitaux / Print) axés soit sur la FUG soit sur 1 projet.</td>
+                            <td>Générer du volume via micro-dons récurrents ou ponctuels (Alumni / Grand Public / PME).</td>
+                        </tr>
+                        <tr>
+                            <td><strong>3. Prospection Directe & Sur-Mesure</strong></td>
+                            <td>Rendez-vous individuels, dossiers d'instruction RSE, conventions pluriannuelles.</td>
+                            <td>Débloquer les grands tickets (Grands Comptes) pour des Chaires, du Naming ou de l'abondement.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>4. Grands Temps Forts Institutionnels</strong></td>
+                            <td>Soirée Annuelle de Lancement & Gala d'Excellence de Décembre.</td>
+                            <td>Célébrer les mécènes, clôturer l'exercice fiscal (31/12) et collecter massivement sur tous les guichets.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+
+        <!-- SLIDE 11 : App Mobile Tiers-Lieu Virtuel UG -->
+        <div class="slide-container">
+            <div class="slide-header">
+                <span class="slide-badge badge-p4">Pilier 4 : Piloter</span>
+                <h2 class="slide-title">L'App Mobile « Tiers-Lieu Virtuel » : Le Hub de Convergence Campus & Alumni</h2>
+            </div>
+
+            <div class="highlight-box">
+                <div class="highlight-title">📱 Un Écosystème Connecté "Dans la Poche" des Étudiants</div>
+                L'application mobile n'est pas un simple canal de collecte : c'est un <strong>Tiers-Lieu Numérique mutualisé</strong>. En apportant une valeur directe au quotidien (emplois, logement, avantages, mentorat), l'UG et la FUG créent de la rétention, qualifient la data CRM et préparent les futurs donateurs.
+            </div>
+
+            <!-- BLOC 1 : ALLIANCE INTERNE UNIVERSITAIRE -->
+            <div class="card" style="margin-bottom: 20px;">
+                <div class="card-title purple">🏛️ 1. L'Alliance Universitaire Inter-Services (Gouvernance Mutualisée)</div>
+                <div class="grid-2" style="margin-bottom: 0; gap: 15px;">
+                    <div>
+                        <p><strong>• Fondation FUG & Réseau Alumni :</strong> Animation de la communauté, mentorat, programme d'avantages, suivi du parcours diplômé et conversion des Alumni en mécènes/recruteurs.</p>
+                        <p><strong>• DOSIP (Orientation & Insertion Pro) :</strong> Gestion des partenariats entreprises, qualification des offres de stage/emploi et suivi de l'insertion professionnelle.</p>
+                    </div>
+                    <div>
+                        <p><strong>• DFPU (Formation Continue) :</strong> Passerelle avec le monde économique local, promotion des cursus en alternance et montée en compétences.</p>
+                        <p><strong>• BVE & Associations Étudiantes :</strong> Animation de la vie du campus, calendrier événementiel, billetterie centralisée et vie associative.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- BLOC 2 : L'ÉCOSYSTÈME DE PARTENAIRES (CÔTÉ OFFREURS) -->
+            <div class="grid-2">
+                <div class="card">
+                    <div class="card-title purple">🏢 2. Écosystème Offreurs & Partenaires</div>
+                    <p><strong>• Entreprises & Acteurs Économiques Locaux :</strong> Publication directe d'offres de stages, d'alternances et de premiers emplois.</p>
+                    <p><strong>• distinction Mécènes du "Club FUG" :</strong> Badge d'authentification VIP sur leurs offres (remontée en tête de liste) + accès direct aux CVthèques pour valoriser leur engagement.</p>
+                    <p><strong>• Bailleurs & Offreurs de Logement :</strong> Publication d'offres de logements étudiants labellisés et sécurisés.</p>
+                    <p><strong>• Commerçants & Sponsors :</strong> Diffusion de réductions et avantages exclusifs négociés pour les étudiants.</p>
+                </div>
+
+                <!-- BLOC 3 : L'EXPÉRIENCE ÉTUDIANT & GAMIFICATION -->
+                <div class="card">
+                    <div class="card-title purple">🎓 3. L'Expérience Étudiant & Trajectoire Alumni</div>
+                    <p><strong>• Profil & CV Augmenté :</strong> Compte personnel intégrant CV classique (PDF) et capsule CV Vidéo pour maximiser l'impact auprès des recuteurs.</p>
+                    <p><strong>• Programmes de Mentorat Croisés :</strong></p>
+                    <ul>
+                        <li><i>Mentorat Alumni ➔ Étudiant :</i> Partage d'expérience et réseau.</li>
+                        <li><i>Mentorat Mécène ➔ Étudiant :</i> Parrainage professionnel par des cadres d'entreprises partenaires.</li>
+                    </ul>
+                    <p><strong>• Gamification & Parcours Évolutif :</strong> Gain de badges (engagement associatif, présence aux événements, mentorat). À la remise de diplôme, le profil <strong>bascule automatiquement en mode Alumni</strong> pour devenir recruteur ou donateur.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 12 : Data, CRM & Logistique -->
+        <div class="slide-container">
+            <div class="slide-header">
+                <span class="slide-badge badge-p4">Pilier 4 : Piloter</span>
+                <h2 class="slide-title">Pilotage Data, CRM Unique & Arbitrage Logistique</h2>
+            </div>
+
+            <div class="grid-2">
+                <div class="card">
+                    <div class="card-title purple">📊 Pilotage & Data à Extraire (CRM)</div>
+                    <p><strong>Indicateurs Financiers & Dons :</strong></p>
+                    <ul>
+                        <li>Volume collecté ventilé : Affecté vs Non Affecté.</li>
+                        <li>Ratio par segment (PME, Grands Comptes, Alumni).</li>
+                        <li>Génération et extraction automatisée des reçus CERFA 16216 après encaissement.</li>
+                    </ul>
+                    <br>
+                    <p><strong>Indicateurs d'Usage Inter-Services :</strong></p>
+                    <ul>
+                        <li>Taux de conversion des étudiants en diplômés actifs.</li>
+                        <li>Nombre de stages/emplois pourvus via la brique DOSIP/DFPU.</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <div class="card-title purple">✈️ Note Logistique Critique : Le "Gratin National"</div>
+                    <p><strong>Problématique :</strong> Déplacer le top management parisien deux fois par an en Guyane est financièrement insoutenable pour la Fondation.</p>
+                    <br>
+                    <p><strong>Arbitrage Stratégique :</strong></p>
+                    <ul>
+                        <li><strong>Soirée de Lancement :</strong> Focus 95 % local en présentiel + retransmission web HD vers Paris.</li>
+                        <li><strong>Gala de Décembre :</strong> Budget présentiel national concentré en associant le déplacement des décideurs à une visite de terrain exclusive (Kourou, stations scientifiques forestières).</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Controls -->
+    <div class="controls">
+        <button class="btn" id="prevBtn" onclick="changeSlide(-1)">Précédent</button>
+        <span class="slide-number" id="slideNum">Diapositive 1 / 13</span>
+        <button class="btn" id="nextBtn" onclick="changeSlide(1)">Suivant</button>
+    </div>
+
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide-container');
+        const navItems = document.querySelectorAll('.nav-item');
+        const slideNumDisplay = document.getElementById('slideNum');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+
+        function updateSlide() {
+            slides.forEach((slide, index) => {
+                slide.classList.toggle('active', index === currentSlide);
+            });
+
+            navItems.forEach((item, index) => {
+                item.classList.toggle('active', index === currentSlide);
+            });
+
+            slideNumDisplay.textContent = `Diapositive ${currentSlide + 1} / ${slides.length}`;
+            
+            prevBtn.disabled = currentSlide === 0;
+            nextBtn.disabled = currentSlide === slides.length - 1;
+        }
+
+        function changeSlide(direction) {
+            currentSlide += direction;
+            if (currentSlide < 0) currentSlide = 0;
+            if (currentSlide >= slides.length) currentSlide = slides.length - 1;
+            updateSlide();
+        }
+
+        function goToSlide(index) {
+            currentSlide = index;
+            updateSlide();
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight' || e.key === 'Space') {
+                if (currentSlide < slides.length - 1) changeSlide(1);
+            } else if (e.key === 'ArrowLeft') {
+                if (currentSlide > 0) changeSlide(-1);
+            }
+        });
+
+        // Initialize
+        updateSlide();
+    </script>
+</body>
+</html>
