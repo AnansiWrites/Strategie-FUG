@@ -242,6 +242,13 @@
             margin-bottom: 20px;
         }
 
+        .grid-4 {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
         .card {
             background-color: #ffffff;
             border: 1px solid var(--border);
@@ -412,6 +419,29 @@
             gap: 6px;
         }
 
+        /* Metric Box for Budgeting & KPIs */
+        .metric-card {
+            background: var(--fug-grey-light);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 16px;
+            text-align: center;
+        }
+
+        .metric-value {
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: var(--fug-green);
+            margin-bottom: 4px;
+        }
+
+        .metric-label {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
         /* Responsive Tables Wrapper */
         .table-responsive {
             width: 100%;
@@ -497,6 +527,7 @@
         /* Responsive Adjustments & Mobile Drawer */
         @media (max-width: 1024px) {
             .grid-3 { grid-template-columns: repeat(2, 1fr); }
+            .grid-4 { grid-template-columns: repeat(2, 1fr); }
         }
 
         @media (max-width: 850px) {
@@ -536,7 +567,7 @@
                 padding: 0 20px;
             }
 
-            .grid-2, .grid-3, .project-body {
+            .grid-2, .grid-3, .grid-4, .project-body {
                 grid-template-columns: 1fr;
             }
 
@@ -592,7 +623,9 @@
         <div class="nav-group">
             <div class="nav-header p4">4. Piloter</div>
             <div class="nav-item" onclick="goToSlide(11)">12. App Mobile : Tiers-Lieu Virtuel UG</div>
-            <div class="nav-item" onclick="goToSlide(12)">13. Pilotage Data, CRM & Logistique</div>
+            <div class="nav-item" onclick="goToSlide(12)">13. Budgétisation des Dépenses</div>
+            <div class="nav-item" onclick="goToSlide(13)">14. Pilotage Financier & Trajectoire</div>
+            <div class="nav-item" onclick="goToSlide(14)">15. Data, CRM, Logistique & Qualité</div>
         </div>
     </div>
 
@@ -647,7 +680,7 @@
                         <p><strong>2. Apport en nature :</strong> Mise à disposition de matériel, véhicules (4x4, pirogues) ou stocks. Valorisation obligatoire au coût de revient HT (pas au prix de vente commercial).</p>
                     </div>
                     <div>
-                        <p><strong>3. Mécénat de compétences :</strong> Mise à disposition de personnel qualifié (Data Scientist, juriste) sur son temps de travail. Valorisation au coût salarial chargé réel.</p>
+                        <p><strong>3. Mécénat de compétences :</strong> Mise à disposition de personnel qualifié (Data Scientist, juriste) sur son temps de travail. Valorisation au coût salarial charged réel.</p>
                     </div>
                 </div>
             </div>
@@ -1324,11 +1357,200 @@
             </div>
         </div>
 
-        <!-- SLIDE 12 : Piloter - Ressources Humaines, CRM & Quality Control -->
+        <!-- SLIDE 12 : NOUVEAU - Budgétisation des Dépenses (Structure & Postes) -->
         <div class="slide-container">
             <div class="slide-header">
                 <span class="slide-badge badge-p4">Pilier 4 : Piloter</span>
-                <h2 class="slide-title">Gouvernance, Maîtrise des Ressources & Gestion de la Qualité (CNQ)</h2>
+                <h2 class="slide-title">Budgétisation des Dépenses : Ventilation Globale & Postes Opérationnels</h2>
+            </div>
+
+            <div class="highlight-box">
+                <div class="highlight-title">💶 Objectif Budgétaire : Allocation Stratégique & Valorisation des Livrables</div>
+                L'enveloppe budgétaire dédiée au déploiement de la stratégie de communication et de mécénat est ventilée de manière à <strong>sécuriser la crédibilité institutionnelle</strong> tout en garantissant des <strong>retombées opérationnelles directes</strong> sur la levée de fonds.
+            </div>
+
+            <div class="grid-4">
+                <div class="metric-card">
+                    <div class="metric-value">30%</div>
+                    <div class="metric-label">Print & Édition Prestige</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">25%</div>
+                    <div class="metric-label">Écosystème Digital & App</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">25%</div>
+                    <div class="metric-label">Événementiel VIP & Mobilisation</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">20%</div>
+                    <div class="metric-label">Production Média & Contenus IA</div>
+                </div>
+            </div>
+
+            <div class="grid-2">
+                <div class="card">
+                    <div class="card-title green">📄 1. Pôle Print, Façonnage & Édition</div>
+                    <p><strong>• Chemises à Rabats & Plaquettes (350g mat) :</strong> Support institutionnel de haut niveau pour RDV Grands Mécènes.</p>
+                    <p><strong>• Fiches Projets & Leaflets Trifold :</strong> Impression des supports d'argumentation et de prospection de masse.</p>
+                    <p><strong>• Le Magazine Annuel d'Impact :</strong> Façonnage premium et tirage physique pour fidéliser les financeurs.</p>
+                    <p><strong>• Signalétique & Kit Événementiel :</strong> Roll-ups, kakémonos, bâches et affiches A2/A3 pour salons et galas.</p>
+                </div>
+
+                <div class="card">
+                    <div class="card-title green">💻 2. Pôle Digital, CMS & App Tiers-Lieu</div>
+                    <p><strong>• Intégration Formulaires & Reçus CERFA :</strong> Automatisation des passerelles de dons (CB/SEPA) et délivrance des reçus.</p>
+                    <p><strong>• Déploiement App Mobile Étudiante & Alumni :</strong> Développement du portail d'offres, mentorat et CV Vidéo.</p>
+                    <p><strong>• Licences & Ingestion CRM :</strong> Qualification et enrichissement du fichier de +400 entreprises cibles.</p>
+                    <p><strong>• Maintenance & Sécurisation RGPD :</strong> Protection des données sensibles des donateurs et boursiers.</p>
+                </div>
+
+                <div class="card">
+                    <div class="card-title green">🍸 3. Pôle Événementiel & Prospection VIP</div>
+                    <p><strong>• Soirée de Lancement FUG (Janvier) :</strong> Privatisation, traiteur local, scenographie et retransmission web HD.</p>
+                    <p><strong>• Gala d'Excellence Maj'Or (Décembre) :</strong> Organisation du temps fort annuel et remise des prix devant les décideurs.</p>
+                    <p><strong>• Petits-Déjeuners & Rencontres Mécènes :</strong> Animation récurrente des clubs PME/TPE en petit comité.</p>
+                </div>
+
+                <div class="card">
+                    <div class="card-title green">🎙️ 4. Pôle Production Médias & IA Audio</div>
+                    <p><strong>• Studio Audio & Podcast FUG :</strong> Équipement de captation, montage et doublage multilingue via IA (FR/EN/PT/ES).</p>
+                    <p><strong>• Captations Vidéo & Interviews :</strong> Production de capsules témoignages d'impact des boursiers MARGO.</p>
+                    <p><strong>• Conception Infographique & Rédaction :</strong> Rémunération des piges et relecture scientifique du Mag.</p>
+                </div>
+            </div>
+
+            <div class="table-responsive">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Poste de Dépenses</th>
+                            <th>Actions & Livrables Clefs</th>
+                            <th>Ventilation Relative (%)</th>
+                            <th>Jalon d'Engagement Préféré</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Supports Print & Façonnage</strong></td>
+                            <td>Chemises, Fiches A4, Leaflets 3 volets, Mag Annuel, Roll-ups</td>
+                            <td><strong>30 %</strong></td>
+                            <td>T1 - Lancement immédiat pour RDV</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Infrastructures Digitales & App</strong></td>
+                            <td>Formulaires de don, App Tiers-Lieu, CRM, Sécurisation RGPD</td>
+                            <td><strong>25 %</strong></td>
+                            <td>T1 - T2 Développement & Tests</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Événementiel & Mobilisation VIP</strong></td>
+                            <td>Soirée de lancement, Gala de Décembre, Rencontres Mécènes</td>
+                            <td><strong>25 %</strong></td>
+                            <td>T1 (Lancement) & T4 (Gala 31/12)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Production Médias & Multilingue</strong></td>
+                            <td>Podcast IA, Vidéos boursiers MARGO, Ligne éditoriale Mag</td>
+                            <td><strong>20 %</strong></td>
+                            <td>Au fil de l'eau (Mensuel / Trimestriel)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- SLIDE 13 : NOUVEAU - Pilotage Financier, Trajectoire & Contrôle de Gestion -->
+        <div class="slide-container">
+            <div class="slide-header">
+                <span class="slide-badge badge-p4">Pilier 4 : Piloter</span>
+                <h2 class="slide-title">Pilotage Financier : Ratios de Performance, Risques & Trajectoire</h2>
+            </div>
+
+            <div class="highlight-box alert">
+                <div class="highlight-title">📊 Principes de Saine Gestion, Contrôle & Effet Levier</div>
+                Toute dépense engagée doit répondre à un <strong>principe strict de retour sur investissement social et financier (SROI)</strong>. Le budget de communication et de prospection est conçu comme un <u>capital d'amorçage</u> destiné à déclencher des financements pluriannuels récurrents.
+            </div>
+
+            <div class="grid-3">
+                <div class="metric-card">
+                    <div class="metric-value">&lt; 15%</div>
+                    <div class="metric-label">Ratio Coût de Collecte / Fonds Levés</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">x 4 à x 6</div>
+                    <div class="metric-label">Effet Levier Target du Budget Com</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">100%</div>
+                    <div class="metric-label">Traçabilité & Conformité CERFA</div>
+                </div>
+            </div>
+
+            <div class="grid-2">
+                <div class="card">
+                    <div class="card-title green">📈 1. Ratios Économiques & Seuils de Rentabilité</div>
+                    <p><strong>• Maîtrise des Frais de Recherche de Fonds :</strong> Garantir que les coûts d'acquisition des mécènes ne dépassent jamais 15 à 20% des sommes collectées.</p>
+                    <p><strong>• Auto-Financement des Temps Forts :</strong> Assurer le sponsoring direct du Gala Maj'Or (entreprises partenaires) pour couvrir intégralement ses frais de réception.</p>
+                    <p><strong>• Recouvrement des Incohérences (CNQ) :</strong> Supprimer les réimpressions en imposant la validation systématique des BAT imprimés et numériques.</p>
+                </div>
+
+                <div class="card">
+                    <div class="card-title green">🔄 2. Trajectoire de Montée en Puissance (3 Ans)</div>
+                    <p><strong>• Année 1 (Amorçage & Ancrage) :</strong> Investissement prioritaire sur les outils fondamentaux (Print rassurer, App mobile, CRM qualifié).</p>
+                    <p><strong>• Année 2 (Déploiement & Récurrence) :</strong> Montée en puissance du Club des Mécènes PME et fidélisation des premiers Grands Comptes.</p>
+                    <p><strong>• Année 3 (Pérennisation & Abondement) :</strong> Automatisation des flux récurrents, renouvellement automatique des conventions et Chaires.</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-title green">🛡️ Matrice des Risques Financiers & Mesures Correctives</div>
+                <div class="table-responsive">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Facteur de Risque Financier</th>
+                                <th>Impact Potentiel</th>
+                                <th>Indicateur d'Alerte</th>
+                                <th>Dispositif Correctif & Réallocation</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Dépassement Coûts Impression / Print</strong></td>
+                                <td>Moyen (Tension sur la trésorerie)</td>
+                                <td>Écart devis > 5% au BAT</td>
+                                <td>Basculement partiel sur des versions PDF interactives & réduction du grammage.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Retard de Collecte Mécénat (Grands Comptes)</strong></td>
+                                <td>Élevé (BFR tendu en fin d'exercice)</td>
+                                <td>Conversion RDV &lt; 20% à M+6</td>
+                                <td>Activation immédiate du réseau PME local (tickets plus petits mais encaissement rapide).</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Surcoût Événementiel (Gala / Lancement)</strong></td>
+                                <td>Modéré (Pression sur le résultat)</td>
+                                <td>Dépassement du budget traiteur/salle</td>
+                                <td>Recherche de sponsoring en nature (Mécénat de boissons, prestations audio visuelles).</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Coût de Non-Qualité (Erreurs CERFA / Data)</strong></td>
+                                <td>Critique (Risque réputationnel & fiscal)</td>
+                                <td>Retours d'erreurs donateurs</td>
+                                <td>Chantier d'assainissement CRM préalable & contrôle automatisé des adresses/SIRET.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 14 : Piloter - Ressources Humaines, CRM & Quality Control (Ex Slide 12) -->
+        <div class="slide-container">
+            <div class="slide-header">
+                <span class="slide-badge badge-p4">Pilier 4 : Piloter</span>
+                <h2 class="slide-title">Gouvernance, CRM, Logistique & Management de la Qualité (CNQ)</h2>
             </div>
 
             <div class="highlight-box" style="border-left: 4px solid #ef4444; background: #fef2f2;">
@@ -1398,7 +1620,7 @@
     <!-- Controls -->
     <div class="controls">
         <button class="btn" id="prevBtn" onclick="changeSlide(-1)">Précédent</button>
-        <span class="slide-number" id="slideNum">Diapositive 1 / 13</span>
+        <span class="slide-number" id="slideNum">Diapositive 1 / 15</span>
         <button class="btn" id="nextBtn" onclick="changeSlide(1)">Suivant</button>
     </div>
 
