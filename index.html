@@ -386,6 +386,37 @@
             z-index: 10;
         }
 
+        .footer-signature {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    letter-spacing: 0.2px;
+}
+
+.footer-signature-icons {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    background: var(--fug-mint);
+    padding: 3px 8px;
+    border-radius: 12px;
+    border: 1px solid rgba(19, 146, 110, 0.2);
+}
+
+.footer-signature-icons svg {
+    width: 13px;
+    height: 13px;
+    fill: var(--fug-green);
+    transition: transform 0.2s ease;
+}
+
+.footer-signature-icons svg:hover {
+    transform: scale(1.2);
+}
+
         .btn {
             padding: 10px 20px;
             border-radius: 6px;
